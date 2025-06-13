@@ -1,11 +1,9 @@
-@import "tailwindcss";
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@theme inline {
+:root {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -19,8 +17,79 @@
   }
 }
 
+/* @tailwind base; */
+/* @tailwind components; */
+/* @tailwind utilities; */
+
+/* Add Swiper base styles */
+@import 'swiper/css';
+
 body {
-  background: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0; /* Match background from image */
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.swiper-container {
+  width: 100%;
+  max-width: 100%; /* Changed to full width */
+  padding-top: 50px;
+  padding-bottom: 80px;
+  position: relative;
+  overflow: visible; /* Allow slides to be visible outside container */
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%; /* Slightly smaller width for better spacing */
+  aspect-ratio: 16 / 9; /* Changed to standard widescreen ratio */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0.9; /* Increased opacity for better visibility */
+  transform: scale(0.95);
+}
+
+@media (min-width: 768px) {
+  .swiper-slide {
+    width: 30%; /* Match the non-media query width */
+  }
+}
+
+.swiper-slide-active {
+  opacity: 1;
+  transform: scale(1.05); /* Slightly larger center slide */
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%; /* Changed from 300px to fill the slide's aspect ratio */
+  object-fit: cover; /* Reverted from contain to cover */
+}
+
+/* Hide default scrollbar if needed */
+.swiper-scrollbar {
+  display: none;
+}
+
+/* Title style */
+.swiper-title {
+    font-family: var(--font-geist-sans);
+    font-size: 2.5rem; /* Adjust size as needed */
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    position: absolute;
+    top: -60px; /* Adjusted from 0 to move it higher */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
 }
